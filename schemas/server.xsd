@@ -1,0 +1,77 @@
+<!-- Copyright 2010 28msec Inc. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oas="http://www.28msec.com/modules/oauth/server" 
+           targetNamespace="http://www.28msec.com/modules/oauth/server"    
+           elementFormDefault="qualified" >
+  
+  <!-- Start : General Type Definitions -->
+  <xs:simpleType name="request-status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="request token"/>
+      <!-- user authorization is handled separately, therefore it's not mentioned here -->
+      <xs:enumeration value="access token (3-legged)"/>
+      <xs:enumeration value="access token (2-legged)"/>
+      <xs:enumeration value="protected resource"/>
+    </xs:restriction>
+  </xs:simpleType>    
+  
+  <xs:simpleType name="token-status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="consumer"/>
+      <xs:enumeration value="request"/>
+      <xs:enumeration value="authorized-request"/>
+      <xs:enumeration value="access"/>
+    </xs:restriction>
+  </xs:simpleType>  
+  <!-- End : General Type Definitions --> 
+
+  <!-- Start : Authorization Information -->   
+  <xs:element name="authorization-information">
+    <xs:complexType>
+      <xs:sequence>        
+        <xs:element name="consumer-key" type="xs:string" />          
+        <xs:element name="callback-url" type="xs:string" />  
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>  
+  <!-- End : Authorization Information --> 
+
+  <!-- Start : Token -->   
+  <xs:element name="token">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="identifier" type="xs:string" />  
+        <xs:element name="consumer-key" type="xs:string" />  
+        <xs:element name="consumer-secret" type="xs:string" />  
+        <xs:element name="last-timestamp" minOccurs="0">  
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nonce" type="xs:string" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="value" type="xs:positiveInteger" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="callback-url" type="xs:string" minOccurs="0" />  
+        <xs:element name="token-key" type="xs:string" minOccurs="0" />
+        <xs:element name="token-secret" type="xs:string" minOccurs="0" />
+        <xs:element name="authorized-identifier" type="xs:string" minOccurs="0" />
+        <xs:element name="verifier" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="timestamp" type="xs:dateTime" use="required" />
+      <xs:attribute name="status" type="oas:token-status" use="required" />
+    </xs:complexType>
+  </xs:element>  
+  <!-- End : Token --> 
+ 
+  <!-- Start : Token Pair -->   
+  <xs:element name="token-pair">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="token-key" type="xs:string" minOccurs="0" />
+        <xs:element name="token-secret" type="xs:string" minOccurs="0" />        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>  
+  <!-- End : Token Pair --> 
+  
+</xs:schema>

@@ -1,0 +1,335 @@
+/*
+
+body{
+	font-family: "Lucida Sans";
+}
+
+div.file{
+	border-bottom: 1px solid #bbbbff;
+	background-color: #eeeeff;
+	padding: 2px;
+}
+
+div.file span a{
+	text-decoration: none;
+	color: #8888dd;
+	float: right;
+	margin-left: 10px;
+}
+
+div.folder{
+	border-bottom: 1px solid #bbffbb;
+	background-color: #eeffee;
+	padding: 2px;
+}
+
+div.folder span a{
+	text-decoration: none;
+	color: #88dd88;
+	float: right;
+	margin-left: 10px;
+}
+
+div.folder a.path{
+	text-decoration: none;
+	color: #000000;
+	float: none;
+	margin-left: 0px;
+}
+
+div.dialog{
+	margin: auto auto;
+	width: 300px;
+}
+
+
+
+
+
+div.contents{
+	border: 1px solid #bbbbff;
+	border-bottom: none;
+}
+
+div.entry{
+	height: 1.6em;
+	line-height: 1.6em;
+	padding-left: 0.5em;
+	background-color: #eeeeff;
+	font-family: "Lucida Sans";
+	border-bottom: 1px solid #bbbbff;
+}
+
+div.selected{
+	background-color: #f6f6ff;
+}
+
+div.entry:hover{
+	background-color: #f6f6ff;
+}
+
+div.actions{
+	width: 6em;
+	float: right;
+	text-align: right;
+	position: relative;
+}
+
+div.actions div{
+	padding-right: 0.5em;
+	cursor: default;
+	color: #aaaaff;
+}
+
+div.actions:hover div{
+	color: #6666aa;
+}
+
+div.actions ul{
+	padding: 0em;
+	margin: 0em;
+	list-style-type: none;
+	display:none;
+	position: absolute;
+	width: 6em;
+	z-index: 100;
+	top: 1.6em;
+	left: 1px;
+	border-bottom: 1px solid #bbbbff;
+	background-color: #f6f6ff;
+}
+
+div.actions:hover ul{
+	display: block;
+}
+
+div.actions li{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	border-right: 1px solid #bbbbff;
+	border-left: 1px solid #bbbbff;
+	color: #aaaaff;
+	padding-right: 0.5em;
+	cursor: hand;
+}
+
+div.actions li:hover{
+	background-color: #eeeeff;
+	color: #7777cc;
+}
+
+div.actions li, div.actions a{
+	color: #aaaaff;
+	text-decoration: none;
+}
+
+div.actions li:hover a{
+	color: #7777cc;
+}
+
+*/
+
+
+
+
+
+/*************************************************************************/
+
+
+
+
+
+
+
+body{
+	font-family: "Lucida Sans";
+	font-size: 12px;
+}
+
+div.browser, div.dialog{
+	width: 500px;
+	padding: 0px;
+	margin: 2em auto;
+	cursor: default;
+	border: 1px solid #aaaaff;
+}
+
+div.browser a, div.dialog a{
+	text-decoration: none;
+	color: #000000;
+}
+
+div.browser-content{
+	margin: 0px;
+	padding: 0px;
+}
+
+div.dialog-content{
+	margin: 0px;
+	padding: 0.5em;
+}
+
+div.browser-header, div.dialog-header{
+	font-size: 1.4em;
+	height: 1.6em;
+	padding: 0em;
+	background-color: #ddddff;
+	border-bottom: 1px solid #aaaaff;
+	overflow: hidden;
+}
+
+div.browser-footer, div.dialog-footer{
+	font-size: 1.2em;
+	height: 1.4em;
+	padding: 0em;
+	margin: 0px;
+	background-color: #ddddff;
+	border-top: 1px solid #aaaaff;
+	clear: both;
+}
+
+div.dialog-footer{
+	text-align: center;
+}
+
+a.browser-action, a.dialog-cancel-button, a.dialog-submit-button{
+	padding: 0.2em 0.5em;
+	line-height: 1.4em;
+	margin: 0em;
+	cursor: hand;
+}
+
+a.browser-action:hover, a.dialog-cancel-button:hover,
+a.dialog-submit-button:hover{
+	background-color: #bbbbff;
+}
+
+a.folder-path{
+	line-height: 1.6em;
+	padding: 0.3em 0.2em;
+	margin: 0em;
+	background-color: none;
+	cursor: hand;
+}
+
+a.folder-path:hover{
+	background-color: #bbbbff;
+}
+
+div.folder, div.file, div.revision{
+	font-size: 1.2em;
+	line-height: 1.4em;
+	clear: both;
+	border-bottom: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+}
+
+div.folder:hover, div.file:hover, div.revision:hover{
+	background-color: #eeeeff;
+	border-bottom: 1px solid #bbbbff;
+	border-top: 1px solid #bbbbff;
+}
+
+div.folder div.icon, div.file div.icon{
+	float: left;
+	margin: 0.1em;
+	width: 1.8em;
+}
+
+div.folder:hover div.actions, div.file:hover div.actions{
+	visibility: visible;
+}
+
+div.deleted span{
+	text-decoration: line-through;
+	color: #777777;
+}
+
+a.folder-link, a.file-link{
+	color: #000000;
+}
+
+div.actions{
+	width: 6em;
+	float: right;
+	text-align: right;
+	position: relative;
+	visibility: hidden;
+}
+
+div.actions div{
+	padding-right: 0.5em;
+	cursor: default;
+	color: #aaaaff;
+}
+
+div.actions:hover div{
+	color: #6666aa;
+}
+
+div.actions ul{
+	padding: 0em;
+	margin: 0em;
+	list-style-type: none;
+	display:none;
+	position: absolute;
+	width: 6em;
+	z-index: 100;
+	top: 1.4em;
+	left: 1px;
+	border-bottom: 1px solid #bbbbff;
+	background-color: #eeeeff;
+}
+
+div.actions:hover ul{
+	display: block;
+}
+
+div.actions li{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	border-right: 1px solid #bbbbff;
+	border-left: 1px solid #bbbbff;
+	color: #aaaaff;
+	padding-right: 0.5em;
+	cursor: hand;
+}
+
+div.actions li a{
+	color: #aaaaff;
+}
+
+div.actions li:hover{
+	background-color: #e0e0ff;
+	color: #7777cc;
+}
+
+div.dialog-label{
+	width: 150px;
+	float: left;
+	height: 1.6em;
+	line-height: 1.6em;
+	padding: 0.1em 0em;
+}
+
+input.dialog-input{
+	height: 1.6em;
+	width: 20em;
+	line-height: 1.6em;
+	padding: 0.1em;
+}
+
+input.dialog-file{
+	height: 1.6em;
+	width: 20em;
+	line-height: 1.6em;
+	padding: 0em;
+}
+
+form.dialog-form{
+	margin: 0px;
+	padding: 0px;
+}
+
