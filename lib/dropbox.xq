@@ -10,7 +10,7 @@ import schema namespace oas="http://www.28msec.com/modules/oauth/client" at "sch
 import schema namespace dbs="http://www.28msec.com/templates/oauth/schemas/dropbox";
 
 
-(: the oauth token/secret pair is from our test-app (email: luchind@hotmail.com) :)
+(: the oauth token/secret pair is from our test-app :)
 declare variable $dropbox:config := 
   oac:config-dropbox("d72mcnqhyv2vijy","tbqk5xodi0rg8r0","http://dropbox.my28msec.com/dbxdemo/callback");
   
